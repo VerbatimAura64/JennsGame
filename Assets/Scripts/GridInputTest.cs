@@ -15,7 +15,7 @@ public class GridInputTest : MonoBehaviour
         mousePos.z = sceneCamera.nearClipPlane;
         Ray ray = sceneCamera.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
+        Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
         if(Physics.Raycast(ray, out hit, 100, groundLayerMask))
         {
             m_lastPosition = hit.point;

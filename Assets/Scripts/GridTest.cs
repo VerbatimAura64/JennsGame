@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GridTest : MonoBehaviour
 {
+    public GameManager GM;
+    public BldShop bldShop;
+    public bool shopping;
     public GameObject house;
     public GameObject bldPrefab;
     public Grid grid;

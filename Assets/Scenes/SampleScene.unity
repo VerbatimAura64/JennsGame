@@ -260,7 +260,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 19
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -284,13 +284,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23219492, y: 0.015872035, z: -0.0037894943, w: 0.97253245}
-  m_LocalPosition: {x: -1.9, y: 44.2, z: -66.6}
+  m_LocalRotation: {x: 0.17739196, y: -0.32063684, z: 0.05720046, w: 0.9286831}
+  m_LocalPosition: {x: 148, y: 92, z: -167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 26.856, y: 1.87, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.479, y: -38.183, z: -0.463}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,7 +998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &801333043
 Grid:
   m_ObjectHideFlags: 0
@@ -1054,6 +1054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64db8cc6fc43a074bb0c7bbc911874bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridTest
+  GM: {fileID: 0}
+  shopping: 0
   house: {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
   bldPrefab: {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
   grid: {fileID: 0}
@@ -1344,7 +1346,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1377,6 +1379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64db8cc6fc43a074bb0c7bbc911874bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridTest
+  GM: {fileID: 0}
+  shopping: 0
   house: {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
   bldPrefab: {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
   grid: {fileID: 0}
@@ -1389,7 +1393,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095578295}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellSize: {x: 10, y: 10, z: 10}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -1504,6 +1508,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357760465}
   m_CullTransparentMesh: 1
+--- !u!1 &1391895853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391895855}
+  - component: {fileID: 1391895854}
+  m_Layer: 0
+  m_Name: BldShop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1391895854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391895853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6c32b1bc8bbf34597b603612ef6046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BldShop
+  buildings: []
+--- !u!4 &1391895855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391895853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.17893, y: 18.7262, z: 45.21312}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1660492623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,3 +2072,4 @@ SceneRoots:
   - {fileID: 394383212}
   - {fileID: 150464543}
   - {fileID: 1847065428}
+  - {fileID: 1391895855}

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class BldShop : MonoBehaviour
 {
-    private GameManager gm;
+    public GameManager gm;
+    public BuildingManager bm;
 
-    [SerializeField]
-    private GameObject[] buildings;
-    private int unlockLevelNeeded;
-    private bool unlockable;
-    private int costToUnlock;
-    private float timeToBuildCompletion;
-    private string bldngType;
+    //[SerializeField]
+    #region
+    public GameObject[] buildings;
+    public int unlockLevelNeeded;
+    public bool unlockable;
+    public int costToUnlock;
+    public float timeToBuildCompletion;
+    public string bldngType;
+    public int bldngLimit;
+    #endregion
 
     void Awake()
     {
@@ -22,9 +26,14 @@ public class BldShop : MonoBehaviour
 
     private void IsUnlockable()
     {
-        if(gm.playerLevel >= unlockLevelNeeded)
+        for (int i = 0; i < buildings.Length; i++)
         {
-            
+            //bm = buildings[i].GetComponent<BuildingManager>();
+            //unlockLevelNeeded = bm.unlockLevel;
+            if (gm.playerLevel >= unlockLevelNeeded)
+            {
+                //buildings[i];//.IsUnlockable = true;
+            }
         }
     }
 }
