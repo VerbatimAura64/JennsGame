@@ -368,7 +368,7 @@ RectTransform:
   m_Father: {fileID: 628313751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -886,7 +886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &619224408
 RectTransform:
   m_ObjectHideFlags: 0
@@ -977,8 +977,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -2.5, y: 0}
+  m_SizeDelta: {x: -15, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &801333042
 GameObject:
@@ -1055,6 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridTest
   GM: {fileID: 0}
+  bldShop: {fileID: 0}
   shopping: 0
   house: {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
   bldPrefab: {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
@@ -1125,7 +1126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1038215412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1145,7 +1146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 392, y: -100}
+  m_AnchoredPosition: {x: 238.4, y: -100}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1038215413
@@ -1193,8 +1194,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2073359091}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 100
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1380,6 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridTest
   GM: {fileID: 0}
+  bldShop: {fileID: 0}
   shopping: 0
   house: {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
   bldPrefab: {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
@@ -1393,7 +1395,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095578295}
   m_Enabled: 1
-  m_CellSize: {x: 10, y: 10, z: 10}
+  m_CellSize: {x: 0.5, y: 0.5, z: 0.5}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -1537,7 +1539,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6c32b1bc8bbf34597b603612ef6046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BldShop
-  buildings: []
+  gm: {fileID: 1847065427}
+  bm: {fileID: 0}
+  buildings:
+  - {fileID: 100000, guid: 2d8bb00a91cfd7e4c8e340571411ff42, type: 3}
+  unlockLevelNeeded: 0
+  unlockable: 0
+  costToUnlock: 0
+  timeToBuildCompletion: 0
+  bldngType: 
+  bldngLimit: 0
 --- !u!4 &1391895855
 Transform:
   m_ObjectHideFlags: 0
@@ -1607,7 +1618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1816267928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1625,7 +1636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -198.7, y: -100}
+  m_AnchoredPosition: {x: -22, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1816267929
@@ -1745,6 +1756,7 @@ MonoBehaviour:
   foodLevel: 0
   foodEarned: 0
   foodLevelMax: 0
+  xpBar: {fileID: 1038215413}
 --- !u!4 &1847065428
 Transform:
   m_ObjectHideFlags: 0
@@ -2002,7 +2014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2073359091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2018,7 +2030,7 @@ RectTransform:
   m_Father: {fileID: 1080073532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -1,10 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    public string bldingClass;
+    
+    public enum BldingClass
+    {
+        Housing,
+        Resource,
+        Storage,
+        Farm
+    }
+    public BldingClass bldClass;
     public int bldingLvl;
     public int unlockLevel;
     public int unlockCost;

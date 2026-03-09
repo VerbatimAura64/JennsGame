@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour 
 {
@@ -10,6 +12,8 @@ public class GameManager : MonoBehaviour
 	public int foodLevel;
 	public int foodEarned;
 	public int foodLevelMax;
+	public Slider xpBar;
+
 
     private void Update()
     {
@@ -25,6 +29,8 @@ public class GameManager : MonoBehaviour
 			xp = 0;
 			xpNeeded += 100;
 			playerMoney += 50;
+			xpBar.value = 0;
+			xpBar.maxValue = xpNeeded;
 		}
 		
 	}
@@ -34,6 +40,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 			xp += 10;
+			xpBar.value += 10;
         }
 		LevelUp();
     }
