@@ -6,7 +6,7 @@ public class GridInputTest : MonoBehaviour
 {
     public Camera sceneCamera;
     private Vector3 m_lastPosition;
-    public LayerMask groundLayerMask;
+    public LayerMask placementLayerMask;
     //[HideInInspector]
 
     public Vector3 GetSelectedMapPosition()
@@ -16,7 +16,7 @@ public class GridInputTest : MonoBehaviour
         Ray ray = sceneCamera.ScreenPointToRay(mousePos);
         RaycastHit hit;
         Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
-        if(Physics.Raycast(ray, out hit, 100, groundLayerMask))
+        if(Physics.Raycast(ray, out hit, 1000, placementLayerMask))
         {
             m_lastPosition = hit.point;
         }
@@ -28,12 +28,6 @@ public class GridInputTest : MonoBehaviour
         => Input.GetMouseButtonDown(0);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }

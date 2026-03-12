@@ -76,5 +76,9 @@ public class GameManager : MonoBehaviour
 		foodLevel += foodEarned;
 	}
 
+	void LoadShop()
+	{
+
+	}
 
 }
