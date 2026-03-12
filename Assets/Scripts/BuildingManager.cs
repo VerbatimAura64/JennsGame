@@ -5,22 +5,35 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    
-    public enum BldingClass
+    [System.Serializable]
+    public class BldingList
     {
+
+    }
+
+    [System.Serializable]
+    public class BldingInfo
+    {
+        public enum BldingClass
+        {
         Housing,
         Resource,
         Storage,
         Farm
+        }
+
+        public BldingClass bldClass;
+        public int bldingLvl;
+        public int unlockLevel;
+        public int unlockCost;
+        public float buildTime;
+        public float prodTime;
+        public GameObject product;
+        public int prodNum;
     }
-    public BldingClass bldClass;
-    public int bldingLvl;
-    public int unlockLevel;
-    public int unlockCost;
-    public float buildTime;
-    public float prodTime;
-    public GameObject product;
-    public int prodNum;
+
+
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

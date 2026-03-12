@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 	public int foodEarned;
 	public int foodLevelMax;
 	public Slider xpBar;
-
+    public GridInputTest gInput;
 
     private void Update()
     {
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
 	void EarnXP()
 	{
-        if (Input.GetMouseButtonDown(0))
+        if (gInput.GetPlacementInput())
         {
 			xp += 10;
 			xpBar.value += 10;

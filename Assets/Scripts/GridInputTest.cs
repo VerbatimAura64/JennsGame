@@ -7,6 +7,7 @@ public class GridInputTest : MonoBehaviour
     public Camera sceneCamera;
     private Vector3 m_lastPosition;
     public LayerMask placementLayerMask;
+    public BldShop shop;
     //[HideInInspector]
 
     public Vector3 GetSelectedMapPosition()
@@ -24,8 +25,26 @@ public class GridInputTest : MonoBehaviour
         
     }
 
-    public bool GetPlacementInput() 
-        => Input.GetMouseButtonDown(0);
+    public bool GetPlacementInput()
+    {
+        if (!shop.shopping)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+         
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

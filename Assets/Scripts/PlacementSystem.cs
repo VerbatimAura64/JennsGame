@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlacementSystem : MonoBehaviour
 {
     public GameObject mouseIndicator, cellIndicator, bldPrefab;
-    public GridTestInput inputManager;
+    public GridInputTest inputManager;
     public Grid grid;
 
     private void Update()

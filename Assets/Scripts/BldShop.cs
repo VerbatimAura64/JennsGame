@@ -1,11 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BldShop : MonoBehaviour
 {
     public GameManager gm;
     public BuildingManager bm;
+    public GameObject shopPanel;
+    public bool shopping;
+
+    public void Start()
+    {
+       shopPanel.SetActive(false);
+    }
+
+    [System.Serializable]
+    public class BldingInfo
+    {
+        public enum BldingClass
+        {
+            Housing,
+            Resource,
+            Storage,
+            Farm
+        }
+
+        public BldingClass bldClass;
+        public int bldingLvl;
+        public int unlockLevel;
+        public int unlockCost;
+        public float buildTime;
+        public float prodTime;
+        public GameObject product;
+        public int prodNum;
+    }
+
+
+    #region
+    [System.Serializable]
+    public class BldingList
+    {
+        public BldingInfo[] shop;
+    }
+
+    public BldingList bldingList = new();
+    #endregion
+
+
+    private void loadShop()
+    {
+
+    }
+
+    public void OpenShop()
+    {
+        shopPanel.SetActive(true);
+        shopping = true;
+    }
+
+    public void CloseShop()
+    {
+        shopPanel.SetActive(false);
+        shopping = false;
+    }
 
     //[SerializeField]
     #region
