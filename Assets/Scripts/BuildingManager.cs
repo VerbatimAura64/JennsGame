@@ -11,8 +11,27 @@ public class BuildingManager : MonoBehaviour
 
     }
 
-    [System.Serializable]
-    public class BldingInfo
+    
+    
+
+
+    
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+[System.Serializable]
+public class BldingInfo
     {
         public enum BldingClass
         {
@@ -31,20 +50,3 @@ public class BuildingManager : MonoBehaviour
         public GameObject product;
         public int prodNum;
     }
-
-
-    
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class BldShop : MonoBehaviour
     public BuildingManager bm;
     public GameObject shopPanel;
     public bool shopping;
+    public bool building;
 
     public void Start()
     {
@@ -47,14 +49,26 @@ public class BldShop : MonoBehaviour
     public BldingList bldingList = new();
     #endregion
 
+    public void BuildThis()
+    {
+        shopPanel.SetActive (false);
+        shopping = false;
+        building = true;
+
+    }
 
     private void loadShop()
     {
-
+        //bldingList.shop = new 
+        for (int i = 0; i < buildings.Length; i++)
+        {
+            
+        }
     }
 
     public void OpenShop()
     {
+        loadShop();
         shopPanel.SetActive(true);
         shopping = true;
     }

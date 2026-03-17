@@ -6,7 +6,7 @@ public class GridInputTest : MonoBehaviour
 {
     public Camera sceneCamera;
     private Vector3 m_lastPosition;
-    public LayerMask placementLayerMask;
+    public LayerMask placementLayerMask, uILayerMask;
     public BldShop shop;
     //[HideInInspector]
 
@@ -19,6 +19,7 @@ public class GridInputTest : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
         if(Physics.Raycast(ray, out hit, 1000, placementLayerMask))
         {
+            
             m_lastPosition = hit.point;
         }
         return m_lastPosition;
@@ -27,11 +28,13 @@ public class GridInputTest : MonoBehaviour
 
     public bool GetPlacementInput()
     {
-        if (!shop.shopping)
+        if (shop.building)
         {
             if (Input.GetMouseButtonDown(0))
             {
+                shop.building = false;
                 return true;
+                
             }
             else
             {
