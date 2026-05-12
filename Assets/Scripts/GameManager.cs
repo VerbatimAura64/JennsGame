@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 	public int foodLevelMax;
 	public Slider xpBar;
     public GridInputTest gInput;
+    public GameObject[] buildings;
 
     private void Update()
     {

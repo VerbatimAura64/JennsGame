@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4612110682376534694}
-  - component: {fileID: -5643059041705907016}
+  - component: {fileID: -5777214869468529338}
   m_Layer: 0
   m_Name: BuildingParent 2
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3356218538931835533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5643059041705907016
+--- !u!114 &-5777214869468529338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,9 +42,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7637653615631487727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e7fe8d3dc1ba514aa264da0ccb67075, type: 3}
+  m_Script: {fileID: 11500000, guid: e19ac5be27957db4f884727df6cf55c4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BuildingManager
+  m_EditorClassIdentifier: Assembly-CSharp::Blding
+  bldObj: {fileID: 0}
+  bldClass: 0
+  bldingLvl: 0
+  prodTime: 0
+  timeToProd: 0
+  product: {fileID: 0}
+  prodNum: 0
+  built: 0
+  building: 0
+  producing: 0
 --- !u!1001 &3356218538931701773
 PrefabInstance:
   m_ObjectHideFlags: 0
