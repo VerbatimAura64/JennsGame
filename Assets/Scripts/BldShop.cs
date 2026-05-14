@@ -12,10 +12,11 @@ public class BldShop : MonoBehaviour
     public GameManager gM;
     public Blding bM;
     public GameObject shopPanel;
+    public PlacementSystem pS;
     //[SerializeField]
     public GameObject shopButton;
     //[SerializeField]
-    public GameObject exampleButton;
+    public GameObject bldingBtn;
     public bool shopping;
     public bool building;
     public int unlockLevelNeeded;
@@ -48,7 +49,7 @@ public class BldShop : MonoBehaviour
         public int prodNum;
     }
 
-    #region
+    #region Building Lists
     [System.Serializable]
     public class BldingList
     {
@@ -65,6 +66,7 @@ public class BldShop : MonoBehaviour
     void Awake()
     {
         gM = GameObject.Find("GM").GetComponent<GameManager>();
+        pS = GameObject.Find("Placement System").GetComponent<PlacementSystem>();
         bldingList.shop = new BldingInfo[gM.buildings.Length];
         
         for (int i = 0; i < gM.buildings.Length; i++)
@@ -83,30 +85,62 @@ public class BldShop : MonoBehaviour
                 product = bM.product,
                 prodNum = bM.prodNum
             };
-        }
+            bldingList.buttons = new GameObject[gM.buildings.Length];
+            bldingList.buttons[i] = GameObject.Find("BuildingBtn (" + i + ")");
+            bldingList.buttons[i].name = bldingList.shop[i].bldObj.name;
+            bldingList.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = bldingList.shop[i].bldObj.name;
+         }
         shopPanel.SetActive(false);
     }
     public void Start()
     {
        //shopPanel.SetActive(false);
     }
+    
     public void BuildThis()
     {
+        bldingBtn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         shopPanel.SetActive(false);
         shopButton.SetActive(true);
         shopping = false;
         building = true;
+
+        Debug.Log("Clicked " + bldingBtn.name);
+        for (int i = 0; i < bldingList.shop.Length; i++)
+        {
+            if (!pS.bldPrefab.name.Equals(bldingBtn.name))
+            {
+                pS.bldPrefab = bldingList.shop[i].bldObj;
+            }
+        }
+        //Debug.Log();
+        //pS.bldPrefab = bldingList.shop[0].bldObj;
 
     }
 
     private void LoadShop()
     {
         shopPanel.SetActive(true);
-        bldingList.buttons = new GameObject[gM.buildings.Length];
+        //bldingList.buttons = new GameObject[gM.buildings.Length];
         for (int i = 0; i < gM.buildings.Length; i++)
         {
-            bldingList.buttons[i] = GameObject.Find("BuildingBtn (" + i + ")");
-            bldingList.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = bldingList.shop[i].bldObj.name;
+
+            
+            if( bldingList.shop[i].unlockLevel <= gM.playerLevel)
+            {
+                //bldingList.buttons[i] = GameObject.Find("BuildingBtn (" + i + ")");
+                //bldingList.buttons[i].name = bldingList.shop[i].bldObj.name;
+                //bldingList.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = bldingList.shop[i].bldObj.name;
+            }
+            else
+            {
+            //    bldingList.buttons[i] = GameObject.Find("LockedBtn (" + i + ")");
+              //  bldingList.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Locked";
+            }
+            
+            
+            
+            //bldingList.buttons[i].GetComponent<Button>().onClick.AddListener(BuildThis);
             //exampleButton.GetComponent<Blding>().bldObj = bldingList.shop[i].bldObj;
             //exampleButton.GetComponent<Button>().GetComponentInChildren<Text>().text = bldingList.shop[0].bldObj.name;
 

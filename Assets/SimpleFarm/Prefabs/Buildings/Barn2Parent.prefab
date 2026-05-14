@@ -48,6 +48,9 @@ MonoBehaviour:
   bldObj: {fileID: 0}
   bldClass: 1
   bldingLvl: 0
+  unlockCost: 0
+  unlockLevel: 0
+  buildTime: 0
   prodTime: 0
   timeToProd: 0
   product: {fileID: 0}
@@ -68,8 +71,20 @@ PrefabInstance:
       value: Building_Barn_Big_02
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a472ab2ffadd75847a64ce022340b29a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a472ab2ffadd75847a64ce022340b29a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a472ab2ffadd75847a64ce022340b29a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a472ab2ffadd75847a64ce022340b29a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a472ab2ffadd75847a64ce022340b29a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -77,7 +92,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a472ab2ffadd75847a64ce022340b29a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a472ab2ffadd75847a64ce022340b29a, type: 3}
       propertyPath: m_LocalRotation.w

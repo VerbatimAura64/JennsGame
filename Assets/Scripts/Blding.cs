@@ -15,7 +15,7 @@ public class Blding : MonoBehaviour
     public int bldingLvl;
     public int unlockCost;
     public int unlockLevel;
-    public int buildTime;
+    public float buildTime;
     public float prodTime;
     public float timeToProd;
     public GameObject product;
@@ -46,12 +46,29 @@ public class Blding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeToProd += Time.deltaTime;
+        if(building)
+        {
+            if (buildTime <= 0)
+            {
+                building = false;
+                built = true;
+            }
+            else
+            {
+                buildTime -= Time.deltaTime;
+            }
+        }
+        if(bldClass == BldingClass.Resource && built)
+        {
+            GenerateResource(bldClass);
+            timeToProd += Time.deltaTime;
+        }
+        
     }
 
     void GenerateResource(BldingClass bldClass)
     {
-        if (bldClass == BldingClass.Resource)
+        //if (bldClass == BldingClass.Resource)
         {
             if (timeToProd >= prodTime)
             {
