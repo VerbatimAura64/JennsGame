@@ -23,6 +23,7 @@ public class Blding : MonoBehaviour
     public bool built;
     public bool building;
     public bool producing;
+    public GameObject notif;
 
     void Awake()
     {
@@ -72,6 +73,8 @@ public class Blding : MonoBehaviour
         {
             if (timeToProd >= prodTime)
             {
+                Debug.Log(timeToProd);
+                notif.SetActive(true);
                 //OnPointerClick(
                 //Reset timer
                 //Add resource to bar

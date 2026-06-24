@@ -12,17 +12,21 @@ public class GridInputTest : MonoBehaviour
 
     public Vector3 GetSelectedMapPosition()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = sceneCamera.nearClipPlane;
-        Ray ray = sceneCamera.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-        Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
-        if(Physics.Raycast(ray, out hit, 1000, placementLayerMask))
+        if (shop.building)
         {
-            
-            m_lastPosition = hit.point;
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = sceneCamera.nearClipPlane;
+            Ray ray = sceneCamera.ScreenPointToRay(mousePos);
+            RaycastHit hit;
+            Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
+            if (Physics.Raycast(ray, out hit, 1000, placementLayerMask))
+            {
+
+                m_lastPosition = hit.point;
+            }
         }
-        return m_lastPosition;
+            return m_lastPosition;
+
         
     }
 

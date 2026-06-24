@@ -11,10 +11,11 @@ public class BldShop : MonoBehaviour
     [Header("Shop Variables")]
     public GameManager gM;
     public Blding bM;
-    public GameObject shopPanel;
     public PlacementSystem pS;
     //[SerializeField]
+    public GameObject shopPanel;
     public GameObject shopButton;
+    public GameObject grid;
     //[SerializeField]
     public GameObject bldingBtn;
     public bool shopping;
@@ -68,10 +69,12 @@ public class BldShop : MonoBehaviour
         gM = GameObject.Find("GM").GetComponent<GameManager>();
         pS = GameObject.Find("Placement System").GetComponent<PlacementSystem>();
         bldingList.shop = new BldingInfo[gM.buildings.Length];
-        
+        bldingList.buttons = new GameObject[gM.buildings.Length];  
         for (int i = 0; i < gM.buildings.Length; i++)
         {
             bM = gM.buildings[i].gameObject.GetComponent<Blding>();
+            bldingList.buttons[i] = GameObject.Find("BuildingBtn (" + i + ")");
+            
             bldingList.shop[i] = new BldingInfo
             {
                 bldObj = gM.buildings[i],
@@ -85,11 +88,13 @@ public class BldShop : MonoBehaviour
                 product = bM.product,
                 prodNum = bM.prodNum
             };
-            bldingList.buttons = new GameObject[gM.buildings.Length];
-            bldingList.buttons[i] = GameObject.Find("BuildingBtn (" + i + ")");
+            
             bldingList.buttons[i].name = bldingList.shop[i].bldObj.name;
             bldingList.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = bldingList.shop[i].bldObj.name;
-         }
+            
+        }
+
+
         shopPanel.SetActive(false);
     }
     public void Start()
@@ -102,6 +107,7 @@ public class BldShop : MonoBehaviour
         bldingBtn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         shopPanel.SetActive(false);
         shopButton.SetActive(true);
+        grid.SetActive(true);
         shopping = false;
         building = true;
 
