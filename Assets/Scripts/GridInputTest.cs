@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GridInputTest : MonoBehaviour
 {
@@ -30,11 +31,22 @@ public class GridInputTest : MonoBehaviour
         
     }
 
+    public bool IsPointerOverUI()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            //Debug.LogError("UI HIT!");
+            return true;
+        }
+        //Debug.LogError("NOT UI!");
+        return false;
+    }
+
     public bool GetPlacementInput()
     {
         if (shop.building)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !IsPointerOverUI())
             {
                 shop.building = false;
                 return true;

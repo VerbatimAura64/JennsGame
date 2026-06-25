@@ -8,8 +8,17 @@ public class PlacementSystem : MonoBehaviour
     public GridInputTest inputManager;
     public Grid grid;
     public BldShop shop;
+    private GridData buildingData;
 
-    private void Update()
+    private Renderer previewRenderer;
+
+    private void Start()
+    {
+        buildingData = new();
+        previewRenderer = cellIndicator.GetComponent<Renderer>();
+    }
+
+    private void PlaceBuilding()
     {
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int cellPosition = grid.WorldToCell(mousePosition);
@@ -18,15 +27,32 @@ public class PlacementSystem : MonoBehaviour
             cellIndicator.SetActive(true);
             mouseIndicator.transform.position = mousePosition;
             cellIndicator.transform.position = grid.CellToWorld(cellPosition);
-        }
-        
-        if (inputManager.GetPlacementInput())
-        {
-            bldPrefab.GetComponent<Blding>().building = true;
-            Instantiate(bldPrefab, cellIndicator.transform.position, Quaternion.identity);
+            if (inputManager.GetPlacementInput())
+            {
+                if (inputManager.IsPointerOverUI())
+                {
+
+                }else
+                {
+                
+                    bldPrefab.GetComponent<Blding>().building = true;
+                    Instantiate(bldPrefab, cellIndicator.transform.position, Quaternion.identity);
+
+                    cellIndicator.SetActive(false);
+                    shop.grid.SetActive(false);
+                
+                }
+            }
             
-            cellIndicator.SetActive(false);
-            shop.grid.SetActive(false);
         }
+
+    }
+
+    private void Update()
+    {
+        PlaceBuilding();
+        
+        
+        
     }
 }

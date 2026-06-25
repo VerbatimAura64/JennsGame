@@ -127,6 +127,8 @@ public class BldShop : MonoBehaviour
     private void LoadShop()
     {
         shopPanel.SetActive(true);
+        building = false;
+        pS.cellIndicator.SetActive(false);
         //bldingList.buttons = new GameObject[gM.buildings.Length];
         for (int i = 0; i < gM.buildings.Length; i++)
         {
@@ -174,6 +176,7 @@ public class BldShop : MonoBehaviour
     public void CloseShop()
     {
         shopPanel.SetActive(false);
+        grid.SetActive(false);
         shopButton.SetActive(true);
         shopping = false;
     }
