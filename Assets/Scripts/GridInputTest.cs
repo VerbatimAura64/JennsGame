@@ -9,6 +9,7 @@ public class GridInputTest : MonoBehaviour
     private Vector3 m_lastPosition;
     public LayerMask placementLayerMask, uILayerMask;
     public BldShop shop;
+    public GameManager gm;
     //[HideInInspector]
 
     public Vector3 GetSelectedMapPosition()
@@ -48,6 +49,7 @@ public class GridInputTest : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUI())
             {
+                gm.EarnXP();
                 shop.building = false;
                 return true;
                 

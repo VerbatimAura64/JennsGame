@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-		EarnXP();
-		
+		//EarnXP();
+		LevelUp();
     }
 
 
@@ -36,14 +36,13 @@ public class GameManager : MonoBehaviour
 		
 	}
 
-	void EarnXP()
+	public void EarnXP()
 	{
-        if (gInput.GetPlacementInput())
-        {
+        
 			xp += 10;
 			xpBar.value += 10;
-        }
-		LevelUp();
+        
+		
     }
 
 	void EarnMoney(int earnedAmt)
