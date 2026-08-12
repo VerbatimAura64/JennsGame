@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 //using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour 
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
 	public int foodEarned;
 	public int foodLevelMax;
 	public Slider xpBar;
+    public TextMeshProUGUI level;
     public GridInputTest gInput;
     public GameObject[] buildings;
 
@@ -27,7 +29,8 @@ public class GameManager : MonoBehaviour
 	{
 		if(xp == xpNeeded){
 			playerLevel++;
-			xp = 0;
+			level.text = playerLevel.ToString();
+            xp = 0;
 			xpNeeded += 100;
 			playerMoney += 50;
 			xpBar.value = 0;
@@ -38,10 +41,8 @@ public class GameManager : MonoBehaviour
 
 	public void EarnXP()
 	{
-        
-			xp += 10;
-			xpBar.value += 10;
-        
+		xp += 10;
+		xpBar.value += 10;   
 		
     }
 
@@ -59,21 +60,26 @@ public class GameManager : MonoBehaviour
 		
 	}
 
-	void FoodStorage()
+	public bool CanStoreFood(int amount)
 	{
-		if (foodLevel != foodLevelMax)
+		if (foodLevel + amount <= foodLevelMax)
 		{
-			FoodIntake();
-		}
+			FoodIntake(amount);
+			return true;
+        }
 		else 
 		{
 			Debug.Log("Need more food storage!");
+			return false;
 		}
 	}
 
-	void FoodIntake()
+	void FoodIntake(int amount)
 	{
-		foodLevel += foodEarned;
+		
+			foodLevel += amount;
+		
+        //foodLevel += amount;
 	}
 
 	void LoadShop()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4612110682376534694}
   - component: {fileID: 2837712467135700444}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuildingParent 3
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MonoBehaviour:
   built: 0
   building: 0
   producing: 0
+  notif: {fileID: 0}
 --- !u!1001 &67696782337029011
 PrefabInstance:
   m_ObjectHideFlags: 0

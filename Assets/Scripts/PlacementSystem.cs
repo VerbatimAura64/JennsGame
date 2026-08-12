@@ -29,21 +29,22 @@ public class PlacementSystem : MonoBehaviour
             cellIndicator.transform.position = grid.CellToWorld(cellPosition);
             if (inputManager.GetPlacementInput())
             {
-                if (inputManager.IsPointerOverUI())
-                {
-
-                }else
-                {
-                
-                    bldPrefab.GetComponent<Blding>().building = true;
+               
+                    //bldPrefab.GetComponent<Blding>().building = true;
                     Instantiate(bldPrefab, cellIndicator.transform.position, Quaternion.identity);
 
                     cellIndicator.SetActive(false);
                     shop.grid.SetActive(false);
                 
-                }
+                
             }
             
+        } else
+        {
+            if(inputManager.GetPlacementInput())
+            {
+                //Debug.Log(mousePosition);
+            }
         }
 
     }
@@ -51,8 +52,7 @@ public class PlacementSystem : MonoBehaviour
     private void Update()
     {
         PlaceBuilding();
-        
-        
+
         
     }
 }

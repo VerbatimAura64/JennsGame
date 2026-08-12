@@ -10,7 +10,7 @@ public class Blding : MonoBehaviour
         Storage,
         Farm
     }
-
+    private GameManager gM;
     public BldingClass bldClass;
     public int bldingLvl;
     public int unlockCost;
@@ -41,7 +41,8 @@ public class Blding : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        building = true;
+        gM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -59,30 +60,46 @@ public class Blding : MonoBehaviour
                 buildTime -= Time.deltaTime;
             }
         }
-        if(bldClass == BldingClass.Resource && built)
+        if (bldClass == BldingClass.Resource && built)
         {
-            GenerateResource(bldClass);
-            timeToProd += Time.deltaTime;
+            GenerateResource();//bldClass);
+            if (producing)
+            {
+                timeToProd += Time.deltaTime;
+            }
         }
         
     }
 
-    void GenerateResource(BldingClass bldClass)
+    void GenerateResource()//BldingClass bldClass)
     {
-        //if (bldClass == BldingClass.Resource)
+ 
+        if (timeToProd >= prodTime)
         {
-            if (timeToProd >= prodTime)
-            {
-                Debug.Log(timeToProd);
-                notif.SetActive(true);
-                //OnPointerClick(
-                //Reset timer
-                //Add resource to bar
-                //Reset production);
-            }
+            //Debug.Log(timeToProd);
+            producing = false;
+            notif.SetActive(true);
+            //OnPointerClick(
+            //Reset timer
+            //Add resource to bar
+            //Reset production);
+        } else
+        {
+            producing = true;
+            notif.SetActive(false);
         }
+        
+       
     }
 
+    public void ResetProduction()
+    {
+        if(gM.CanStoreFood(prodNum))
+        {
+            timeToProd = 0;
+        }
+        
+    }
 
 
 
