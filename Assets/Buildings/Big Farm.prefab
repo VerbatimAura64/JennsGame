@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -8706602676420501637}
   - component: {fileID: -5548882216829577842}
   m_Layer: 6
-  m_Name: BuildingParent 0
+  m_Name: Big Farm
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

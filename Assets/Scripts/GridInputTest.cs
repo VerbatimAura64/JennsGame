@@ -93,44 +93,18 @@ public class GridInputTest : MonoBehaviour
                         if (!bldingScript.producing && bldingScript.built)
                         {
                             bldingScript.ResetProduction();
-                            return true;
-                            //Debug.Log("Collected " + bldingScript.prodAmt + " from " + hitObject.name);
-                            //gm.EarnMoney(bldingScript.prodAmt);
                         } 
-                            //Debug.Log(bldingScript.producing);
-
-                        return false;
-                        //bldingScript.notif.SetActive(false);
-                        //bldingScript.producing = true;
-                        //gm.EarnMoney(bldingScript.prodAmt);
-                        //Debug.Log("Collected " + bldingScript.prodAmt + " from " + hitObject.name);
+                        
                     }
-                    return false;
+                    
                 }
-                //Debug.Log("Clicked on building");
-                return false;
-                
-
+                return true;
             }
             else
             {
                 return false;
             }
         }
-        //else
-        {
-            //  if (Input.GetMouseButtonDown(0) && !IsPointerOverUI())
-            //{ 
-            //  if(IsPointerOverBuilding())
-            //{
-            //  Debug.Log("Clicked on building");
-            //return true;
-            //}
-
-            //}
-            //return false;
-        }
-
     }
          
     // Start is called once before the first execution of Update after the MonoBehaviour is created

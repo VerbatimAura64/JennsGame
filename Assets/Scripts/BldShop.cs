@@ -132,8 +132,6 @@ public class BldShop : MonoBehaviour
         //bldingList.buttons = new GameObject[gM.buildings.Length];
         for (int i = 0; i < gM.buildings.Length; i++)
         {
-
-            
             if( bldingList.shop[i].unlockLevel <= gM.playerLevel)
             {
                 //bldingList.buttons[i] = GameObject.Find("BuildingBtn (" + i + ")");
