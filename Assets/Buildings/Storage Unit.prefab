@@ -55,8 +55,8 @@ MonoBehaviour:
   buildTime: 3
   prodTime: 0
   timeToProd: 0
-  product: {fileID: 0}
   prodNum: 0
+  product: {fileID: 0}
   built: 0
   building: 0
   producing: 0
@@ -81,7 +81,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.8, y: 0.7, z: 1}
-  m_Center: {x: 0, y: 0.34, z: 0}
+  m_Center: {x: 1, y: 0.34, z: 0.5}
 --- !u!1001 &6121840928242025936
 PrefabInstance:
   m_ObjectHideFlags: 0

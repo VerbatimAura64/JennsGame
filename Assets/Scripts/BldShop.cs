@@ -101,9 +101,22 @@ public class BldShop : MonoBehaviour
     {
        //shopPanel.SetActive(false);
     }
-    
+
+    public bool CanAfford(int cost)
+    {
+        if (gM.playerMoney >= cost)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void BuildThis()
     {
+        
         bldingBtn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         shopPanel.SetActive(false);
         shopButton.SetActive(true);
@@ -117,6 +130,7 @@ public class BldShop : MonoBehaviour
             if (!pS.bldPrefab.name.Equals(bldingBtn.name))
             {
                 pS.bldPrefab = bldingList.shop[i].bldObj;
+                costToUnlock = bldingList.shop[i].unlockCost;
             }
         }
         //Debug.Log();
@@ -134,6 +148,14 @@ public class BldShop : MonoBehaviour
         {
             if( bldingList.shop[i].unlockLevel <= gM.playerLevel)
             {
+                if(CanAfford(bldingList.shop[i].unlockCost))
+                {
+                    bldingList.buttons[i].GetComponent<Button>().interactable = true;
+                }
+                else
+                {
+                    bldingList.buttons[i].GetComponent<Button>().interactable = false;
+                }
                 //bldingList.buttons[i] = GameObject.Find("BuildingBtn (" + i + ")");
                 //bldingList.buttons[i].name = bldingList.shop[i].bldObj.name;
                 //bldingList.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = bldingList.shop[i].bldObj.name;

@@ -86,6 +86,8 @@ public class Blding : MonoBehaviour
             case BldingClass.Housing:
                 if(built)
                 {
+                    //Produce wood and stone
+                    //Drain food on collection? Per DeltaTime?
                     //gM.AddHousing();
                 }
                 break;
@@ -167,17 +169,27 @@ public class Blding : MonoBehaviour
        
     }
 
-    public void ResetProduction()
+    public void ResetFoodProduction()
     {
         //Check This Building's class and add the appropriate resource to the GameManager's storage
         if (gM.CanStoreFood(prodNum))
         {
             timeToProd = 0;
+            gM.EarnMoney(prodNum);
         }
         
     }
 
+    public void ResetProduction()
+    {
+        //Check This Building's class and add the appropriate resource to the GameManager's storage
+        if (gM.CanStoreResource(prodNum))
+        {
+            timeToProd = 0;
+            gM.EarnMoney(prodNum);
+        }
 
+    }
 
 
 

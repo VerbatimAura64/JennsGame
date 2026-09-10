@@ -104,12 +104,12 @@ public class GameManager : MonoBehaviour
 		
     }
 
-	void EarnMoney(int earnedAmt)
+	public void EarnMoney(int earnedAmt)
 	{
 		playerMoney += earnedAmt;
 	}
 
-	void LoseMoney(int costAmt)
+	public void LoseMoney(int costAmt)
 	{
 		if (playerMoney >= costAmt)
 		{
@@ -132,7 +132,21 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	void FoodIntake(int amount)
+    public bool CanStoreResource(int amount)
+    {
+        if (woodLevel + amount <= maxStorage)
+        {
+            ResourceIntake(amount);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Need more Resource storage!");
+            return false;
+        }
+    }
+
+    void FoodIntake(int amount)
 	{
 		
 		foodLevel += amount;
@@ -140,7 +154,15 @@ public class GameManager : MonoBehaviour
         //foodLevel += amount;
     }
 
-	void LoadShop()
+	void ResourceIntake(int amount)
+	{
+		woodLevel += amount;
+		woodBar.value = woodLevel;
+		stoneLevel += amount;
+		stoneBar.value = stoneLevel;
+    }
+
+    void LoadShop()
 	{
 
 	}

@@ -72,6 +72,7 @@ public class GridInputTest : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUI())
             {
                 gm.EarnXP();
+                gm.LoseMoney(shop.costToUnlock);
                 shop.building = false;
                 return true;
                 
@@ -90,11 +91,15 @@ public class GridInputTest : MonoBehaviour
                     Blding bldingScript = hitObject.GetComponent<Blding>();
                     if (bldingScript != null)
                     {
-                        if (!bldingScript.producing && bldingScript.built)
+                        if (!bldingScript.producing && bldingScript.built && bldingScript.bldClass == Blding.BldingClass.Farm)
+                        {
+                            bldingScript.ResetFoodProduction();
+                        }
+                        if (!bldingScript.producing && bldingScript.built && bldingScript.bldClass == Blding.BldingClass.Resource)
                         {
                             bldingScript.ResetProduction();
-                        } 
-                        
+                        }
+
                     }
                     
                 }
