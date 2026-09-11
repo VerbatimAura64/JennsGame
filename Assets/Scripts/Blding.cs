@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-    public struct ResouceCost
+    public struct ResourceCost
     {
         public ResourceType resource;
         public int amount;
     }
+[System.Serializable]
+public struct ConsumptionCost
+    {
+        public ResourceType resource;
+        public int amount;
+}
 public class Blding : MonoBehaviour
 {
     
@@ -24,11 +30,13 @@ public class Blding : MonoBehaviour
     public BldingClass bldClass;
     public ResourceType resource;
     public int bldingLvl;
-    public List<ResouceCost> buildCost;
+    public List<ResourceCost> buildCost;
     public int unlockLevel;
     public int storageLimit;
     public float buildTime;
     public float prodTime;
+    public float consumptionTime;
+    public List<ConsumptionCost> consumptionCost;
     public float timeToProd;
     public int prodNum;
     public GameObject product;
@@ -73,13 +81,6 @@ public class Blding : MonoBehaviour
                 {
                     gM.storageBlds.Add(this.gameObject);
                     gM.UpdateStorage(storageLimit);
-                    
-                    //storageLimit = 1;
-                    //if (gM.storageBlds.Count <= storageLimit)
-                    //{
-                    //gM.storageBlds.Add(this.gameObject);
-                    //gM.UpdateStorage();
-                    //}
                 }
             }
             else
@@ -92,9 +93,12 @@ public class Blding : MonoBehaviour
             case BldingClass.Housing:
                 if(built)
                 {
-                    //Produce wood and stone
-                    //Drain food on collection? Per DeltaTime?
-                    //gM.AddHousing();
+                    if (!producing)
+                    {
+                        DepleteFood(buildCost);
+                       
+                    }
+                    break;
                 }
                 break;
             case BldingClass.Resource:
@@ -108,11 +112,6 @@ public class Blding : MonoBehaviour
                 }
                 break;
             case BldingClass.Storage:
-                if (built)
-                {
-                    
-                    
-                }
                 break;
             case BldingClass.Farm:
                 GenerateFood();//bldClass);
@@ -175,9 +174,28 @@ public class Blding : MonoBehaviour
        
     }
 
-    void DepleteFood()
+    void DepleteFood(List<ResourceCost> cost)//List<ResourceCost> cost)
     {
-
+        consumptionTime += Time.deltaTime;
+        if (consumptionTime >= prodTime)
+        {
+            //Debug.Log(timeToProd);
+            producing = false;
+            foreach (var resource in cost)
+            {
+                gM.inventory[resource.resource] -= resource.amount;
+            }
+            producing = false;
+            consumptionTime = 0;
+            
+            //notif.SetActive(true);
+            //OnPointerClick(
+            //Reset timer
+            //Add resource to bar
+            //Reset production);
+        }
+       
+        //
     }
 
     public void ResetFoodProduction()

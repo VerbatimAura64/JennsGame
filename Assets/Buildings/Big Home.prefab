@@ -55,10 +55,14 @@ MonoBehaviour:
     amount: 3
   - resource: 1
     amount: 3
+  - resource: 2
+    amount: 4
   unlockLevel: 2
   storageLimit: 0
   buildTime: 0
   prodTime: 0
+  consumptionTime: 5
+  consumptionAmount: 4
   timeToProd: 0
   prodNum: 0
   product: {fileID: 0}

@@ -49,13 +49,17 @@ MonoBehaviour:
   bldClass: 0
   resource: 0
   bldingLvl: 0
-  buildCost: []
+  buildCost:
+  - resource: 2
+    amount: 1
   unlockLevel: 0
   storageLimit: 0
-  buildTime: 0
+  buildTime: 3
   prodTime: 0
+  consumptionTime: 3
+  consumptionAmount: 1
   timeToProd: 0
-  prodNum: 0
+  prodNum: 1
   product: {fileID: 0}
   built: 0
   building: 0

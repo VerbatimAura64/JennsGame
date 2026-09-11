@@ -22,7 +22,7 @@ public class BldShop : MonoBehaviour
     public bool building;
     public int unlockLevelNeeded;
     public bool unlockable;
-    public List<ResouceCost> costToUnlock;
+    public List<ResourceCost> costToUnlock;
     public float timeToBuildCompletion;
     public string bldngType;
     public int bldngLimit;
@@ -44,7 +44,7 @@ public class BldShop : MonoBehaviour
         public ResourceType resource;
         public int bldingLvl;
         public int unlockLevel;
-        public List<ResouceCost> buildCost;
+        public List<ResourceCost> buildCost;
         public float buildTime;
         public float prodTime;
         public GameObject product;
@@ -103,7 +103,7 @@ public class BldShop : MonoBehaviour
        //shopPanel.SetActive(false);
     }
 
-    public bool CanAfford(List<ResouceCost> cost)
+    public bool CanAfford(List<ResourceCost> cost)
     {
         foreach (var resource in cost)
         {

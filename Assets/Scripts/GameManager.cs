@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
 		playerMoney += earnedAmt;
 	}
 
-	public void PayResource(List<ResouceCost> cost)//List<ResourceCost> cost)
+	public void PayResource(List<ResourceCost> cost)//List<ResourceCost> cost)
     {
         foreach (var resource in cost)
         {
