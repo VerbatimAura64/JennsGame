@@ -9,11 +9,6 @@ using UnityEngine;
         public int amount;
     }
 [System.Serializable]
-public struct ConsumptionCost
-    {
-        public ResourceType resource;
-        public int amount;
-}
 public class Blding : MonoBehaviour
 {
     
@@ -36,7 +31,7 @@ public class Blding : MonoBehaviour
     public float buildTime;
     public float prodTime;
     public float consumptionTime;
-    public List<ConsumptionCost> consumptionCost;
+    public List<ResourceCost> consumptionCost;
     public float timeToProd;
     public int prodNum;
     public GameObject product;
@@ -93,11 +88,10 @@ public class Blding : MonoBehaviour
             case BldingClass.Housing:
                 if(built)
                 {
-                    if (!producing)
-                    {
-                        DepleteFood(buildCost);
+                    
+                        DepleteFood(consumptionCost);
                        
-                    }
+                    
                     break;
                 }
                 break;
@@ -114,10 +108,13 @@ public class Blding : MonoBehaviour
             case BldingClass.Storage:
                 break;
             case BldingClass.Farm:
-                GenerateFood();//bldClass);
-                if (producing)
+                if (built)
                 {
-                    timeToProd += Time.deltaTime;
+                    GenerateFood();//bldClass);
+                    if (producing)
+                    {
+                        timeToProd += Time.deltaTime;
+                    }
                 }
                 break;
             default:
@@ -180,12 +177,12 @@ public class Blding : MonoBehaviour
         if (consumptionTime >= prodTime)
         {
             //Debug.Log(timeToProd);
-            producing = false;
+            
             foreach (var resource in cost)
             {
                 gM.inventory[resource.resource] -= resource.amount;
+                gM.inventory[resource.resource] = Mathf.Max(0, gM.inventory[resource.resource]);
             }
-            producing = false;
             consumptionTime = 0;
             
             //notif.SetActive(true);
