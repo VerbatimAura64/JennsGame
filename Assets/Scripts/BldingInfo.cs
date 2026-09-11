@@ -13,7 +13,7 @@ public class BldingInfo : MonoBehaviour
             Storage,
             Farm
         }
-
+    public List<ResouceCost> buildCost;
     public BldingClass bldClass;
     public int bldingLvl;
     public float prodTime;

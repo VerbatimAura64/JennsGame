@@ -49,8 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Blding
   bldObj: {fileID: 0}
   bldClass: 3
+  resource: 2
   bldingLvl: 0
-  unlockCost: 8
+  buildCost:
+  - resource: 0
+    amount: 3
   unlockLevel: 3
   storageLimit: 0
   buildTime: 10

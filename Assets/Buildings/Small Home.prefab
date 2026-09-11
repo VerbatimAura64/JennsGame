@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Blding
   bldObj: {fileID: 0}
   bldClass: 0
+  resource: 0
   bldingLvl: 0
-  unlockCost: 0
+  buildCost: []
   unlockLevel: 0
   storageLimit: 0
   buildTime: 0
@@ -98,7 +99,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca6558dbd03876b42a762459119765c3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca6558dbd03876b42a762459119765c3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -106,7 +107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca6558dbd03876b42a762459119765c3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca6558dbd03876b42a762459119765c3, type: 3}
       propertyPath: m_LocalRotation.z
@@ -118,7 +119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca6558dbd03876b42a762459119765c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca6558dbd03876b42a762459119765c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

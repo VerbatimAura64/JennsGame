@@ -1,5 +1,13 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+    public struct ResouceCost
+    {
+        public ResourceType resource;
+        public int amount;
+    }
 public class Blding : MonoBehaviour
 {
     
@@ -10,17 +18,13 @@ public class Blding : MonoBehaviour
         Storage,
         Farm
     }
-    public enum ResourceType
-    {
-        Wood,
-        Stone
-        
-    }
+
     public GameObject bldObj;
     private GameManager gM;
     public BldingClass bldClass;
+    public ResourceType resource;
     public int bldingLvl;
-    public int unlockCost;
+    public List<ResouceCost> buildCost;
     public int unlockLevel;
     public int storageLimit;
     public float buildTime;
@@ -33,6 +37,8 @@ public class Blding : MonoBehaviour
     public bool producing;
     public GameObject notif;
 
+
+    
     void Awake()
     {
         bldObj = this.gameObject;
@@ -169,10 +175,15 @@ public class Blding : MonoBehaviour
        
     }
 
+    void DepleteFood()
+    {
+
+    }
+
     public void ResetFoodProduction()
     {
         //Check This Building's class and add the appropriate resource to the GameManager's storage
-        if (gM.CanStoreFood(prodNum))
+        if (gM.CanStoreResource(ResourceType.Food, prodNum))
         {
             timeToProd = 0;
             gM.EarnMoney(prodNum);
@@ -183,7 +194,7 @@ public class Blding : MonoBehaviour
     public void ResetProduction()
     {
         //Check This Building's class and add the appropriate resource to the GameManager's storage
-        if (gM.CanStoreResource(prodNum))
+        if (gM.CanStoreResource(resource, prodNum))
         {
             timeToProd = 0;
             gM.EarnMoney(prodNum);

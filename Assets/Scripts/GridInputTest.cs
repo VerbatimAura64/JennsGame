@@ -72,7 +72,9 @@ public class GridInputTest : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUI())
             {
                 gm.EarnXP();
-                gm.LoseMoney(shop.costToUnlock);
+                gm.PayResource(shop.costToUnlock);
+                //gm.PayResource((shop.costToUnlock[0].resource, shop.costToUnlock[0].amount));
+                //gm.LoseMoney(shop.costToUnlock);
                 shop.building = false;
                 return true;
                 

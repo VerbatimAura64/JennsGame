@@ -22,7 +22,7 @@ public class BldShop : MonoBehaviour
     public bool building;
     public int unlockLevelNeeded;
     public bool unlockable;
-    public int costToUnlock;
+    public List<ResouceCost> costToUnlock;
     public float timeToBuildCompletion;
     public string bldngType;
     public int bldngLimit;
@@ -41,9 +41,10 @@ public class BldShop : MonoBehaviour
         }
 
         public BldingClass bldClass;
+        public ResourceType resource;
         public int bldingLvl;
         public int unlockLevel;
-        public int unlockCost;
+        public List<ResouceCost> buildCost;
         public float buildTime;
         public float prodTime;
         public GameObject product;
@@ -78,11 +79,11 @@ public class BldShop : MonoBehaviour
             bldingList.shop[i] = new BldingInfo
             {
                 bldObj = gM.buildings[i],
-                //bldClass = bM.bldClass,
+                resource = (ResourceType)gM.buildings[i].GetComponent<Blding>().resource,
                 bldClass = (BldingInfo.BldingClass)gM.buildings[i].GetComponent<Blding>().bldClass,
                 bldingLvl = bM.bldingLvl,
                 unlockLevel = bM.bldingLvl,
-                unlockCost = bM.unlockCost,
+                buildCost = bM.buildCost,
                 buildTime = bM.buildTime,
                 prodTime = bM.prodTime,
                 product = bM.product,
@@ -102,9 +103,21 @@ public class BldShop : MonoBehaviour
        //shopPanel.SetActive(false);
     }
 
-    public bool CanAfford(int cost)
+    public bool CanAfford(List<ResouceCost> cost)
     {
-        if (gM.playerMoney >= cost)
+        foreach (var resource in cost)
+        {
+            if (gM.inventory[resource.resource] < resource.amount)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public bool CanUnlock(int level)
+    {
+        if (level > gM.playerLevel)
         {
             return true;
         }
@@ -130,7 +143,7 @@ public class BldShop : MonoBehaviour
             if (!pS.bldPrefab.name.Equals(bldingBtn.name))
             {
                 pS.bldPrefab = bldingList.shop[i].bldObj;
-                costToUnlock = bldingList.shop[i].unlockCost;
+                costToUnlock = bldingList.shop[i].buildCost;
             }
         }
         //Debug.Log();
@@ -146,42 +159,14 @@ public class BldShop : MonoBehaviour
         //bldingList.buttons = new GameObject[gM.buildings.Length];
         for (int i = 0; i < gM.buildings.Length; i++)
         {
-            if( bldingList.shop[i].unlockLevel <= gM.playerLevel)
+            if (CanAfford(bldingList.shop[i].buildCost))
             {
-                if(CanAfford(bldingList.shop[i].unlockCost))
-                {
-                    bldingList.buttons[i].GetComponent<Button>().interactable = true;
-                }
-                else
-                {
-                    bldingList.buttons[i].GetComponent<Button>().interactable = false;
-                }
-                //bldingList.buttons[i] = GameObject.Find("BuildingBtn (" + i + ")");
-                //bldingList.buttons[i].name = bldingList.shop[i].bldObj.name;
-                //bldingList.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = bldingList.shop[i].bldObj.name;
+                bldingList.buttons[i].GetComponent<Button>().interactable = true;
             }
             else
             {
-            //    bldingList.buttons[i] = GameObject.Find("LockedBtn (" + i + ")");
-              //  bldingList.buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Locked";
+                bldingList.buttons[i].GetComponent<Button>().interactable = false;
             }
-            
-            
-            
-            //bldingList.buttons[i].GetComponent<Button>().onClick.AddListener(BuildThis);
-            //exampleButton.GetComponent<Blding>().bldObj = bldingList.shop[i].bldObj;
-            //exampleButton.GetComponent<Button>().GetComponentInChildren<Text>().text = bldingList.shop[0].bldObj.name;
-
-
-            //bldingList.buttons[i] = shopPanel.transform.GetChild(i).gameObject;
-            //bldingList.buttons[i].GetComponent<Button>().GetComponentInChildren<Text>().text = bldingList.shop[i].bldObj.name;
-        }
-        
-        
-        //bldingList.shop = new 
-        //for (int i = 0; i < buildings.Length; i++)
-        {
-
         }
     }
 

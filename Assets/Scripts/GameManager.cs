@@ -1,9 +1,11 @@
+using Mono.Cecil;
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using NUnit.Framework;
 //using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour 
@@ -31,6 +33,13 @@ public class GameManager : MonoBehaviour
 	public List<GameObject> storageBlds;
 	public int units;
 
+	public Dictionary<ResourceType, int> inventory = new Dictionary<ResourceType, int>()
+	{
+        {ResourceType.Food, 0},
+		{ResourceType.Wood, 0},
+		{ResourceType.Stone, 0},
+	};
+
     private void Start()
     {
         storageBlds = new List<GameObject>();
@@ -41,6 +50,7 @@ public class GameManager : MonoBehaviour
 		//EarnXP();
 		LevelUp();
 		StorageValues();
+		CheckStorage();
 		
 	}
 
@@ -55,26 +65,12 @@ public class GameManager : MonoBehaviour
 
 	void CheckStorage()
 	{
-		if(maxStorage != storageBlds.Count * units)
-		{
-			maxStorage = storageBlds.Count * units;
-		}
-                //units += storageBlds[i].GetComponent<Blding>().storageLimit;
-            
-		
-		if (foodLevel >= maxStorage)
-		{
-			Debug.Log("Food storage is full!");
-		}
-		if (stoneLevel >= maxStorage)
-		{
-			Debug.Log("Stone storage is full!");
-		}
-		if (woodLevel >= maxStorage)
-		{
-			Debug.Log("Wood storage is full!");
-		}
-
+		foodLevel = inventory[ResourceType.Food];
+		foodBar.value = foodLevel;
+        stoneLevel = inventory[ResourceType.Stone];
+		stoneBar.value = stoneLevel;
+        woodLevel = inventory[ResourceType.Wood];
+		woodBar.value = woodLevel;
     }
     void StorageValues()
 	{
@@ -109,34 +105,28 @@ public class GameManager : MonoBehaviour
 		playerMoney += earnedAmt;
 	}
 
-	public void LoseMoney(int costAmt)
-	{
-		if (playerMoney >= costAmt)
-		{
-			playerMoney -= costAmt;
-		}
+	public void PayResource(List<ResouceCost> cost)//List<ResourceCost> cost)
+    {
+        foreach (var resource in cost)
+        {
+			inventory[resource.resource] -= resource.amount;
+
+            //    if(inventory[resource.resource] < resource.amount)
+        }
+       
+
+		//if (playerMoney >= costAmt)
+		//{
+			//playerMoney -= costAmt;
+		//}
 		
 	}
 
-	public bool CanStoreFood(int amount)
-	{
-		if (foodLevel + amount <= maxStorage)
-		{
-			FoodIntake(amount);
-			return true;
-        }
-		else 
-		{
-			Debug.Log("Need more food storage!");
-			return false;
-		}
-	}
-
-    public bool CanStoreResource(int amount)
+    public bool CanStoreResource(ResourceType resource, int amount)
     {
-        if (woodLevel + amount <= maxStorage)
+        if (inventory[resource] + amount <= maxStorage)
         {
-            ResourceIntake(amount);
+            ResourceIntake(resource, amount);
             return true;
         }
         else
@@ -146,20 +136,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void FoodIntake(int amount)
+	void ResourceIntake(ResourceType resource,int amount)
 	{
-		
-		foodLevel += amount;
-		foodBar.value = foodLevel;
-        //foodLevel += amount;
-    }
-
-	void ResourceIntake(int amount)
-	{
-		woodLevel += amount;
-		woodBar.value = woodLevel;
-		stoneLevel += amount;
-		stoneBar.value = stoneLevel;
+		inventory[resource] += amount;
+		switch (resource)
+		{
+			case ResourceType.Wood:
+				woodBar.value = inventory[resource];
+				break;
+			case ResourceType.Stone:
+				stoneBar.value = inventory[resource];
+				break;
+			case ResourceType.Food:
+				foodBar.value = inventory[resource];
+				break;
+            default:
+				break;
+		}
     }
 
     void LoadShop()
