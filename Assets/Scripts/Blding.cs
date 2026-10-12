@@ -27,6 +27,7 @@ public class Blding : MonoBehaviour
     public int bldingLvl;
     public List<ResourceCost> buildCost;
     public int unlockLevel;
+    public bool unlocked;
     public int storageLimit;
     public float buildTime;
     public float prodTime;
@@ -66,6 +67,9 @@ public class Blding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gM.level >= unlockLevel) {
+            unlocked = true;
+        }
         if(building)
         {
             if (buildTime <= 0)
