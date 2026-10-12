@@ -67,7 +67,7 @@ public class Blding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gM.level >= unlockLevel) {
+        if (gM.playerLevel >= unlockLevel) {
             unlocked = true;
         }
         if(building)
