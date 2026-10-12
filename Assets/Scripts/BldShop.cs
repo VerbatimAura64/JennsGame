@@ -82,7 +82,7 @@ public class BldShop : MonoBehaviour
                 resource = (ResourceType)gM.buildings[i].GetComponent<Blding>().resource,
                 bldClass = (BldingInfo.BldingClass)gM.buildings[i].GetComponent<Blding>().bldClass,
                 bldingLvl = bM.bldingLvl,
-                unlockLevel = bM.bldingLvl,
+                unlockLevel = bM.unlockLvl,
                 buildCost = bM.buildCost,
                 buildTime = bM.buildTime,
                 prodTime = bM.prodTime,
@@ -190,12 +190,13 @@ public class BldShop : MonoBehaviour
 
     private void IsUnlockable()
     {
-        //for (int i = 0; i < buildings.Length; i++)
+        for (int i = 0; i < buildings.Length; i++)
         {
             //bm = buildings[i].GetComponent<BuildingManager>();
             //unlockLevelNeeded = bm.unlockLevel;
-            if (gM.playerLevel >= unlockLevelNeeded)
+            //if (buildings[i].GetComponent<Blding>.unlocked)
             {
+
                 //buildings[i];//.IsUnlockable = true;
             }
         }
