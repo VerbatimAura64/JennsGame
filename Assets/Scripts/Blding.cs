@@ -47,15 +47,6 @@ public class Blding : MonoBehaviour
         bldObj = this.gameObject;
     }
 
-    /*[System.Serializable]
-    public class BldingInfo
-    {
-
-      //  [System.Serializable]
-        
-    }*/
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         building = true;
@@ -88,10 +79,7 @@ public class Blding : MonoBehaviour
             case BldingClass.Housing:
                 if(built)
                 {
-                    
-                        DepleteFood(consumptionCost);
-                       
-                    
+                    DepleteFood(consumptionCost);
                     break;
                 }
                 break;
@@ -110,7 +98,7 @@ public class Blding : MonoBehaviour
             case BldingClass.Farm:
                 if (built)
                 {
-                    GenerateFood();//bldClass);
+                    GenerateResource();//bldClass);
                     if (producing)
                     {
                         timeToProd += Time.deltaTime;
@@ -129,25 +117,6 @@ public class Blding : MonoBehaviour
             }
         }*/
         
-    }
-
-    void GenerateFood()
-    {
-        if (timeToProd >= prodTime)
-        {
-            //Debug.Log(timeToProd);
-            producing = false;
-            notif.SetActive(true);
-            //OnPointerClick(
-            //Reset timer
-            //Add resource to bar
-            //Reset production);
-        }
-        else
-        {
-            producing = true;
-            notif.SetActive(false);
-        }
     }
 
     void GenerateResource()//BldingClass bldClass)
@@ -201,7 +170,7 @@ public class Blding : MonoBehaviour
         if (gM.CanStoreResource(ResourceType.Food, prodNum))
         {
             timeToProd = 0;
-            gM.EarnMoney(prodNum);
+            //gM.EarnMoney(prodNum);
         }
         
     }
@@ -212,7 +181,7 @@ public class Blding : MonoBehaviour
         if (gM.CanStoreResource(resource, prodNum))
         {
             timeToProd = 0;
-            gM.EarnMoney(prodNum);
+            //gM.EarnMoney(prodNum);
         }
 
     }
