@@ -44,6 +44,7 @@ public class BldShop : MonoBehaviour
         public ResourceType resource;
         public int bldingLvl;
         public int unlockLevel;
+        public bool unlocked;
         public List<ResourceCost> buildCost;
         public float buildTime;
         public float prodTime;
@@ -82,7 +83,7 @@ public class BldShop : MonoBehaviour
                 resource = (ResourceType)gM.buildings[i].GetComponent<Blding>().resource,
                 bldClass = (BldingInfo.BldingClass)gM.buildings[i].GetComponent<Blding>().bldClass,
                 bldingLvl = bM.bldingLvl,
-                unlockLevel = bM.unlockLvl,
+                unlockLevel = bM.unlockLevel,
                 buildCost = bM.buildCost,
                 buildTime = bM.buildTime,
                 prodTime = bM.prodTime,
@@ -115,10 +116,11 @@ public class BldShop : MonoBehaviour
         return true;
     }
 
-    public bool CanUnlock(int level)
+    public bool CanUnlock(int level, int bldLvl)
     {
-        if (level > gM.playerLevel)
+        if (level >= bldLvl)
         {
+            
             return true;
         }
         else
@@ -159,11 +161,17 @@ public class BldShop : MonoBehaviour
         //bldingList.buttons = new GameObject[gM.buildings.Length];
         for (int i = 0; i < gM.buildings.Length; i++)
         {
-            if (CanAfford(bldingList.shop[i].buildCost))
+            if (CanUnlock(gM.playerLevel, gM.buildings[i].GetComponent<Blding>().unlockLevel))
             {
-                bldingList.buttons[i].GetComponent<Button>().interactable = true;
-            }
-            else
+                if (CanAfford(bldingList.shop[i].buildCost))
+                {
+                    bldingList.buttons[i].GetComponent<Button>().interactable = true;
+                }
+                else
+                {
+                    bldingList.buttons[i].GetComponent<Button>().interactable = false;
+                }
+            } else
             {
                 bldingList.buttons[i].GetComponent<Button>().interactable = false;
             }
@@ -190,7 +198,7 @@ public class BldShop : MonoBehaviour
 
     private void IsUnlockable()
     {
-        for (int i = 0; i < buildings.Length; i++)
+        for (int i = 0; i < bldingList.shop.Length; i++)
         {
             //bm = buildings[i].GetComponent<BuildingManager>();
             //unlockLevelNeeded = bm.unlockLevel;

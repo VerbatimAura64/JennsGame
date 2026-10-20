@@ -145,10 +145,13 @@ MonoBehaviour:
   buildCost:
   - resource: 0
     amount: 2
-  unlockLevel: 3
+  unlockLevel: 2
+  unlocked: 0
   storageLimit: 0
-  buildTime: 0
-  prodTime: 0
+  buildTime: 5
+  prodTime: 3
+  consumptionTime: 0
+  consumptionCost: []
   timeToProd: 0
   prodNum: 0
   product: {fileID: 0}

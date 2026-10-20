@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.iOS;
+//using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
@@ -17,9 +17,10 @@ public class GameManager : MonoBehaviour
 	public int woodLevel;
 	public int stoneLevel;
 	public int foodLevel;
+	public float foodMin;
 	public int coins;
 	//public int woodLevelMax;
-	private int xpNeeded = 100;
+	private int xpNeeded = 30;
 	
 	public int foodEarned;
 	public int foodLevelMax;
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
 			playerLevel++;
 			level.text = playerLevel.ToString();
             xp = 0;
-			xpNeeded += 100;
+			xpNeeded += 10;
 			playerMoney += 50;
 			xpBar.value = 0;
 			xpBar.maxValue = xpNeeded;
@@ -120,6 +121,18 @@ public class GameManager : MonoBehaviour
 			//playerMoney -= costAmt;
 		//}
 		
+	}
+
+	public bool EnoughFood()
+	{
+		if(foodLevel >= foodMin)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
     public bool CanStoreResource(ResourceType resource, int amount)

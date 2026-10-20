@@ -52,7 +52,8 @@ MonoBehaviour:
   buildCost:
   - resource: 2
     amount: 1
-  unlockLevel: 0
+  unlockLevel: 1
+  unlocked: 0
   storageLimit: 0
   buildTime: 3
   prodTime: 5
