@@ -57,12 +57,13 @@ MonoBehaviour:
     amount: 3
   - resource: 2
     amount: 4
-  unlockLevel: 2
+  unlockLevel: 3
+  unlocked: 0
   storageLimit: 0
   buildTime: 0
   prodTime: 0
   consumptionTime: 5
-  consumptionAmount: 4
+  consumptionCost: []
   timeToProd: 0
   prodNum: 0
   product: {fileID: 0}
