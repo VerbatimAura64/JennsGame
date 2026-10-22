@@ -5,7 +5,9 @@ public enum ResourceType
 {
         Wood,
         Stone,
-        Food
+        Food,
+        Citizens,
+        Electricity
 
-    
+
 }

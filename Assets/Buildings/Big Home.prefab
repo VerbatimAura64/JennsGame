@@ -48,8 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Blding
   bldObj: {fileID: 0}
   bldClass: 0
-  resource: 0
+  resource: 3
   bldingLvl: 0
+  built: 0
+  unlockLevel: 3
+  unlocked: 0
+  building: 0
+  buildTime: 10
   buildCost:
   - resource: 0
     amount: 3
@@ -57,19 +62,16 @@ MonoBehaviour:
     amount: 3
   - resource: 2
     amount: 4
-  unlockLevel: 3
-  unlocked: 0
-  storageLimit: 0
-  buildTime: 0
   prodTime: 0
-  consumptionTime: 5
-  consumptionCost: []
   timeToProd: 0
   prodNum: 0
-  product: {fileID: 0}
-  built: 0
-  building: 0
   producing: 0
+  consumptionTime: 8
+  consumptionCost:
+  - resource: 2
+    amount: 4
+  storageLimit: 0
+  workersNeeded: 0
   notif: {fileID: 0}
 --- !u!1001 &67696782337029011
 PrefabInstance:

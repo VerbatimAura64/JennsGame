@@ -73,6 +73,7 @@ public class GridInputTest : MonoBehaviour
             {
                 gm.EarnXP();
                 gm.PayResource(shop.costToUnlock);
+                //gm.resourceBuildings.Add();
                 //gm.PayResource((shop.costToUnlock[0].resource, shop.costToUnlock[0].amount));
                 //gm.LoseMoney(shop.costToUnlock);
                 shop.building = false;
@@ -96,11 +97,11 @@ public class GridInputTest : MonoBehaviour
                         /*if (!bldingScript.producing && bldingScript.built && bldingScript.bldClass == Blding.BldingClass.Farm)
                         {
                             bldingScript.ResetFoodProduction();
-                        }
+                        }*/
                         if (!bldingScript.producing && bldingScript.built && bldingScript.bldClass == Blding.BldingClass.Resource)
-                        {*/
+                        {
                             bldingScript.ResetProduction();
-                        //}
+                        }
 
                     }
                     

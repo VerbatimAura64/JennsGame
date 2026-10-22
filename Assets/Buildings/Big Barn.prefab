@@ -48,16 +48,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Blding
   bldObj: {fileID: 0}
-  bldClass: 3
+  bldClass: 1
   resource: 2
   bldingLvl: 0
   buildCost:
   - resource: 0
     amount: 3
   unlockLevel: 3
+  unlocked: 0
   storageLimit: 0
   buildTime: 10
   prodTime: 10
+  consumptionTime: 0
+  consumptionCost: []
   timeToProd: 0
   prodNum: 6
   product: {fileID: 0}

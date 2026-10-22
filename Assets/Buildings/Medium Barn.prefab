@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Blding
   bldObj: {fileID: 0}
-  bldClass: 3
+  bldClass: 1
   resource: 2
   bldingLvl: 0
   buildCost:

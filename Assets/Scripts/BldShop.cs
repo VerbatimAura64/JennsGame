@@ -87,7 +87,7 @@ public class BldShop : MonoBehaviour
                 buildCost = bM.buildCost,
                 buildTime = bM.buildTime,
                 prodTime = bM.prodTime,
-                product = bM.product,
+                //product = bM.product,
                 prodNum = bM.prodNum
             };
             

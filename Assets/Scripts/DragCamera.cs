@@ -20,6 +20,7 @@ public class DragCamera : MonoBehaviour, IDragHandler
     // Update is called once per frame
     void Update()
     {
+        OnDrag(new PointerEventData(EventSystem.current));
         if (!shop.building)
         {
 

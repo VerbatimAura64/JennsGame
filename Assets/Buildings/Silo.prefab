@@ -50,22 +50,22 @@ MonoBehaviour:
   bldClass: 2
   resource: 0
   bldingLvl: 0
+  built: 0
+  unlockLevel: 2
+  unlocked: 0
+  building: 0
+  buildTime: 4
   buildCost:
   - resource: 1
     amount: 3
-  unlockLevel: 3
-  unlocked: 0
-  storageLimit: 6
-  buildTime: 0
   prodTime: 0
-  consumptionTime: 0
-  consumptionCost: []
   timeToProd: 0
   prodNum: 0
-  product: {fileID: 0}
-  built: 0
-  building: 0
   producing: 0
+  consumptionTime: 0
+  consumptionCost: []
+  storageLimit: 6
+  workersNeeded: 0
   notif: {fileID: 0}
 --- !u!136 &905880660051066601
 CapsuleCollider:

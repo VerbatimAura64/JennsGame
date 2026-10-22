@@ -10,28 +10,38 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour 
 {
-	public int playerLevel;
-	public int playerMoney;
+	[Header("Player Stats")]
+    public int playerLevel;
+	//public int playerMoney;
 	public int xp;
-	public int maxStorage;
+	private int xpNeeded = 30;
+	[Header("Resources")]
+    public int maxStorage;
 	public int woodLevel;
 	public int stoneLevel;
 	public int foodLevel;
+	public int totalPop;
+	public int availWorkers;
 	public float foodMin;
 	public int coins;
 	//public int woodLevelMax;
-	private int xpNeeded = 30;
+	
 	
 	public int foodEarned;
 	public int foodLevelMax;
-	public Slider xpBar;
+
+	[Header("UI Elements")]
+    public Slider xpBar;
 	public Slider foodBar;
 	public Slider stoneBar;
 	public Slider woodBar;
+	public TextMeshProUGUI citizenNum;
     public TextMeshProUGUI level;
+	[Header("References")]
     public GridInputTest gInput;
     public GameObject[] buildings;
 	public List<GameObject> storageBlds;
+	public List<GameObject> resourceBuildings;
 	public int units;
 
 	public Dictionary<ResourceType, int> inventory = new Dictionary<ResourceType, int>()
@@ -53,6 +63,7 @@ public class GameManager : MonoBehaviour
 		StorageValues();
 		CheckStorage();
 		
+		
 	}
 
 	public void UpdateStorage(int amount)
@@ -72,6 +83,8 @@ public class GameManager : MonoBehaviour
 		stoneBar.value = stoneLevel;
         woodLevel = inventory[ResourceType.Wood];
 		woodBar.value = woodLevel;
+        citizenNum.text = totalPop.ToString();
+
     }
     void StorageValues()
 	{
@@ -87,12 +100,18 @@ public class GameManager : MonoBehaviour
 			level.text = playerLevel.ToString();
             xp = 0;
 			xpNeeded += 10;
-			playerMoney += 50;
+			//playerMoney += 50;
 			xpBar.value = 0;
 			xpBar.maxValue = xpNeeded;
 		}
 		
 	}
+
+	public void UpdateHousing(int citizens)
+	{
+		totalPop += citizens;
+		availWorkers += citizens;
+    }
 
 	public void EarnXP()
 	{
@@ -103,7 +122,7 @@ public class GameManager : MonoBehaviour
 
 	public void EarnMoney(int earnedAmt)
 	{
-		playerMoney += earnedAmt;
+		//playerMoney += earnedAmt;
 	}
 
 	public void PayResource(List<ResourceCost> cost)//List<ResourceCost> cost)
@@ -123,8 +142,22 @@ public class GameManager : MonoBehaviour
 		
 	}
 
+	public bool Starving()
+	{
+		if (!EnoughFood())
+		{
+			//availWorkers -= 1;
+            return false;
+		} else 
+		{
+			
+			return true; 
+		}
+	}
+
 	public bool EnoughFood()
 	{
+		foodMin = totalPop * 1.25f;
 		if(foodLevel >= foodMin)
 		{
 			return true;
@@ -133,6 +166,11 @@ public class GameManager : MonoBehaviour
 		{
 			return false;
 		}
+	}
+
+	public void AssignWorkers()
+	{
+
 	}
 
     public bool CanStoreResource(ResourceType resource, int amount)
@@ -149,7 +187,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-	void ResourceIntake(ResourceType resource,int amount)
+	void ResourceIntake(ResourceType resource, int amount)
 	{
 		inventory[resource] += amount;
 		switch (resource)
@@ -163,14 +201,9 @@ public class GameManager : MonoBehaviour
 			case ResourceType.Food:
 				foodBar.value = inventory[resource];
 				break;
-            default:
+			default:
 				break;
 		}
-    }
-
-    void LoadShop()
-	{
-
 	}
 
 }

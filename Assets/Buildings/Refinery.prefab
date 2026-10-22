@@ -163,19 +163,22 @@ MonoBehaviour:
   bldClass: 1
   resource: 1
   bldingLvl: 0
+  built: 0
+  unlockLevel: 1
+  unlocked: 0
+  building: 0
+  buildTime: 3
   buildCost:
   - resource: 2
     amount: 1
-  unlockLevel: 0
-  storageLimit: 0
-  buildTime: 3
-  prodTime: 2
+  prodTime: 4
   timeToProd: 0
   prodNum: 2
-  product: {fileID: 1887045377432839903}
-  built: 0
-  building: 0
   producing: 0
+  consumptionTime: 0
+  consumptionCost: []
+  storageLimit: 0
+  workersNeeded: 0
   notif: {fileID: 1887045377432839903}
 --- !u!1001 &8191527207368034981
 PrefabInstance:

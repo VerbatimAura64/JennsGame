@@ -142,19 +142,22 @@ MonoBehaviour:
   bldClass: 1
   resource: 0
   bldingLvl: 0
+  built: 0
+  unlockLevel: 1
+  unlocked: 0
+  building: 0
+  buildTime: 2
   buildCost:
   - resource: 2
     amount: 1
-  unlockLevel: 0
-  storageLimit: 0
-  buildTime: 2
-  prodTime: 1
+  prodTime: 4
   timeToProd: 0
   prodNum: 2
-  product: {fileID: 0}
-  built: 0
-  building: 0
   producing: 0
+  consumptionTime: 0
+  consumptionCost: []
+  storageLimit: 0
+  workersNeeded: 0
   notif: {fileID: 1196948689208897307}
 --- !u!65 &3045812728035438927
 BoxCollider:

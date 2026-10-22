@@ -22,23 +22,32 @@ public class Blding : MonoBehaviour
 
     public GameObject bldObj;
     private GameManager gM;
+    [Header("Shared Building Variables")]
     public BldingClass bldClass;
     public ResourceType resource;
     public int bldingLvl;
-    public List<ResourceCost> buildCost;
+    public bool built;
     public int unlockLevel;
     public bool unlocked;
-    public int storageLimit;
+
+    [Header("Timers and Bools")]
+    public bool building;
     public float buildTime;
+    public List<ResourceCost> buildCost;
     public float prodTime;
-    public float consumptionTime;
-    public List<ResourceCost> consumptionCost;
     public float timeToProd;
     public int prodNum;
-    public GameObject product;
-    public bool built;
-    public bool building;
     public bool producing;
+
+    public float consumptionTime;
+    public List<ResourceCost> consumptionCost;
+    public int storageLimit;
+
+    [Header("Resource Workers")]
+    public int workersNeeded;
+
+
+    [Header("UI Elements")]
     public GameObject notif;
 
 
@@ -70,6 +79,14 @@ public class Blding : MonoBehaviour
                     gM.storageBlds.Add(this.gameObject);
                     gM.UpdateStorage(storageLimit);
                 }
+                if(bldClass == BldingClass.Housing)
+                {
+                    gM.UpdateHousing(consumptionCost[0].amount);
+                }
+                if(bldClass == BldingClass.Resource) 
+                { 
+                    gM.resourceBuildings.Add(this.gameObject);
+                }
             }
             else
             {
@@ -88,11 +105,13 @@ public class Blding : MonoBehaviour
             case BldingClass.Resource:
                 if (built)
                 {
-                    GenerateResource();//bldClass);
-                    if (producing)
-                    {
-                        timeToProd += Time.deltaTime;
-                    }
+                    
+                        GenerateResource();//bldClass);
+                        if (producing)
+                        {
+                            timeToProd += Time.deltaTime;
+                        }
+                    
                 }
                 break;
             case BldingClass.Storage:
@@ -166,7 +185,7 @@ public class Blding : MonoBehaviour
         //
     }
 
-    public void ResetFoodProduction()
+    /*public void ResetFoodProduction()
     {
         //Check This Building's class and add the appropriate resource to the GameManager's storage
         if (gM.CanStoreResource(ResourceType.Food, prodNum))
@@ -175,7 +194,7 @@ public class Blding : MonoBehaviour
             //gM.EarnMoney(prodNum);
         }
         
-    }
+    }*/
 
     public void ResetProduction()
     {
