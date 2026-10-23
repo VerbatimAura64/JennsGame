@@ -139,23 +139,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Blding
   bldObj: {fileID: 0}
-  bldClass: 1
+  bldClass: 3
   resource: 2
   bldingLvl: 0
-  buildCost: []
+  built: 0
   unlockLevel: 0
   unlocked: 0
-  storageLimit: 0
+  building: 0
   buildTime: 6
+  buildCost: []
   prodTime: 3
-  consumptionTime: 0
-  consumptionCost: []
   timeToProd: 0
   prodNum: 1
-  product: {fileID: 0}
-  built: 0
-  building: 0
   producing: 0
+  consumptionTime: 0
+  consumptionCost: []
+  storageLimit: 0
+  workersNeeded: 0
   notif: {fileID: 1239699526512329943}
 --- !u!65 &2259636339680575634
 BoxCollider:

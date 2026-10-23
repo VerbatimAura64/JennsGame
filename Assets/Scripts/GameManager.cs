@@ -20,10 +20,14 @@ public class GameManager : MonoBehaviour
 	public int woodLevel;
 	public int stoneLevel;
 	public int foodLevel;
-	public int totalPop;
-	public int availWorkers;
 	public float foodMin;
-	public int coins;
+
+	[Header("Population")]
+    
+	public int totalPop;
+	public int totalWorkers;
+	public int availWorkers;
+	
 	//public int woodLevelMax;
 	
 	
@@ -110,7 +114,8 @@ public class GameManager : MonoBehaviour
 	public void UpdateHousing(int citizens)
 	{
 		totalPop += citizens;
-		availWorkers += citizens;
+		totalWorkers = totalPop;
+        availWorkers += citizens;
     }
 
 	public void EarnXP()

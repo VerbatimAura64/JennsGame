@@ -157,7 +157,7 @@ MonoBehaviour:
   consumptionTime: 0
   consumptionCost: []
   storageLimit: 0
-  workersNeeded: 0
+  workersNeeded: 2
   notif: {fileID: 1196948689208897307}
 --- !u!65 &3045812728035438927
 BoxCollider:

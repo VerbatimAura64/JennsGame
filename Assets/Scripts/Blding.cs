@@ -86,6 +86,7 @@ public class Blding : MonoBehaviour
                 if(bldClass == BldingClass.Resource) 
                 { 
                     gM.resourceBuildings.Add(this.gameObject);
+                    gM.availWorkers -= workersNeeded;
                 }
             }
             else
@@ -105,12 +106,13 @@ public class Blding : MonoBehaviour
             case BldingClass.Resource:
                 if (built)
                 {
-                    
+                    if(gM.availWorkers >= workersNeeded && !gM.Starving()){
                         GenerateResource();//bldClass);
                         if (producing)
                         {
                             timeToProd += Time.deltaTime;
                         }
+                    }
                     
                 }
                 break;
@@ -185,7 +187,7 @@ public class Blding : MonoBehaviour
         //
     }
 
-    /*public void ResetFoodProduction()
+    public void ResetFoodProduction()
     {
         //Check This Building's class and add the appropriate resource to the GameManager's storage
         if (gM.CanStoreResource(ResourceType.Food, prodNum))
@@ -194,7 +196,7 @@ public class Blding : MonoBehaviour
             //gM.EarnMoney(prodNum);
         }
         
-    }*/
+    }
 
     public void ResetProduction()
     {
