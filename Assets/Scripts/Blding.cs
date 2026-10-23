@@ -45,6 +45,7 @@ public class Blding : MonoBehaviour
 
     [Header("Resource Workers")]
     public int workersNeeded;
+    public bool staffed;
 
 
     [Header("UI Elements")]
@@ -86,7 +87,7 @@ public class Blding : MonoBehaviour
                 if(bldClass == BldingClass.Resource) 
                 { 
                     gM.resourceBuildings.Add(this.gameObject);
-                    gM.availWorkers -= workersNeeded;
+                    
                 }
             }
             else
@@ -106,7 +107,7 @@ public class Blding : MonoBehaviour
             case BldingClass.Resource:
                 if (built)
                 {
-                    if(gM.availWorkers >= workersNeeded && !gM.Starving()){
+                    if(!gM.Starving() && staffed){
                         GenerateResource();//bldClass);
                         if (producing)
                         {

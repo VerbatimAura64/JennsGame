@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
 		LevelUp();
 		StorageValues();
 		CheckStorage();
+		AssignWorkers();
 		
 		
 	}
@@ -152,11 +153,11 @@ public class GameManager : MonoBehaviour
 		if (!EnoughFood())
 		{
 			//availWorkers -= 1;
-            return false;
+            return true;
 		} else 
 		{
 			
-			return true; 
+			return false; 
 		}
 	}
 
@@ -175,8 +176,26 @@ public class GameManager : MonoBehaviour
 
 	public void AssignWorkers()
 	{
-
-	}
+		availWorkers = totalWorkers;
+		foreach (var bld in resourceBuildings)
+		{
+			Blding bldScript = bld.GetComponent<Blding>();
+			if (bldScript != null && bldScript.built)
+			{
+				bldScript.staffed = false;
+                if (availWorkers >= bldScript.workersNeeded)
+				{
+					availWorkers -= bldScript.workersNeeded;
+					bldScript.staffed = true;
+				}
+				else
+				{
+					bldScript.staffed = false;
+                }
+                
+            }
+        }
+    }
 
     public bool CanStoreResource(ResourceType resource, int amount)
     {

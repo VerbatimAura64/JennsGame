@@ -178,7 +178,8 @@ MonoBehaviour:
   consumptionTime: 0
   consumptionCost: []
   storageLimit: 0
-  workersNeeded: 0
+  workersNeeded: 1
+  staffed: 0
   notif: {fileID: 1887045377432839903}
 --- !u!1001 &8191527207368034981
 PrefabInstance:

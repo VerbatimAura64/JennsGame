@@ -98,7 +98,7 @@ public class GridInputTest : MonoBehaviour
                         {
                             bldingScript.ResetFoodProduction();
                         }
-                        if (!bldingScript.producing && bldingScript.built && (bldingScript.bldClass == Blding.BldingClass.Resource))
+                        if (!bldingScript.producing && bldingScript.built && bldingScript.staffed && (bldingScript.bldClass == Blding.BldingClass.Resource))
                         {
                             bldingScript.ResetProduction();
                         }
