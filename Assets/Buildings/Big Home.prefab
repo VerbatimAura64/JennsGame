@@ -62,7 +62,7 @@ MonoBehaviour:
     amount: 3
   - resource: 2
     amount: 4
-  prodTime: 0
+  prodTime: 6
   timeToProd: 0
   prodNum: 0
   producing: 0
@@ -72,6 +72,7 @@ MonoBehaviour:
     amount: 4
   storageLimit: 0
   workersNeeded: 0
+  staffed: 0
   notif: {fileID: 0}
 --- !u!1001 &67696782337029011
 PrefabInstance:
